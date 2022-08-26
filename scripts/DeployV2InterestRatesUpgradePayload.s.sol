@@ -2,12 +2,12 @@
 pragma solidity ^0.8.0;
 
 import {Script} from 'forge-std/Script.sol';
-import {Ghost} from '../src/contracts/Ghost.sol';
+import {V2InterestRatesUpgradePayload} from '../src/contracts/V2InterestRatesUpgradePayload.sol';
 
 contract Deploy is Script {
   function run() external {
     vm.startBroadcast();
-    new Ghost();
+    new V2InterestRatesUpgradePayload();
     vm.stopBroadcast();
   }
 }
