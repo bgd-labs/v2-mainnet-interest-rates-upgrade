@@ -2,35 +2,10 @@
 pragma solidity ^0.8.0;
 
 import {DefaultReserveInterestRateStrategy, IPoolAddressesProvider} from '../../aave-v3-core/contracts/protocol/pool/DefaultReserveInterestRateStrategy.sol';
+import {IInterestRatesStrategyFactory} from './IInterestRatesStrategyFactory.sol';
 
-contract InterestRatesStrategyFactory {
+contract InterestRatesStrategyFactory is IInterestRatesStrategyFactory {
   mapping(bytes32 => address) private _deployedStrategies;
-
-  event ReserveInterestRateStrategyCreated(
-    string name,
-    uint256 optimalUsageRatio,
-    uint256 baseVariableBorrowRate,
-    uint256 variableRateSlope1,
-    uint256 variableRateSlope2,
-    uint256 stableRateSlope1,
-    uint256 stableRateSlope2,
-    uint256 baseStableRateOffset,
-    uint256 stableRateExcessOffset,
-    uint256 optimalStableToTotalDebtRatio
-  );
-
-  struct StrategyParams {
-    string name;
-    uint256 optimalUsageRatio;
-    uint256 baseVariableBorrowRate;
-    uint256 variableRateSlope1;
-    uint256 variableRateSlope2;
-    uint256 stableRateSlope1;
-    uint256 stableRateSlope2;
-    uint256 baseStableRateOffset;
-    uint256 stableRateExcessOffset;
-    uint256 optimalStableToTotalDebtRatio;
-  }
 
   function createDeterministic(StrategyParams[] calldata strategyParams)
     external
@@ -38,9 +13,10 @@ contract InterestRatesStrategyFactory {
   {
     address[] memory strategies = new address[](strategyParams.length);
     for (uint256 i = 0; i < strategyParams.length; i++) {
-      bytes32 salt = _getSaltFromName(strategyParams[i].name);
       strategies[i] = address(
-        new DefaultReserveInterestRateStrategy{salt: salt}(
+        new DefaultReserveInterestRateStrategy{
+          salt: _getSaltFromName(strategyParams[i].name)
+        }(
           IPoolAddressesProvider(address(0)), // TODO: check
           strategyParams[i].optimalUsageRatio,
           strategyParams[i].baseVariableBorrowRate,
@@ -53,7 +29,9 @@ contract InterestRatesStrategyFactory {
           strategyParams[i].optimalStableToTotalDebtRatio
         )
       );
-      _deployedStrategies[salt] = strategies[i];
+      _deployedStrategies[
+        _getSaltFromName(strategyParams[i].name)
+      ] = strategies[i];
 
       emit ReserveInterestRateStrategyCreated(
         strategyParams[i].name,
@@ -93,7 +71,11 @@ contract InterestRatesStrategyFactory {
     return _deployedStrategies[_getSaltFromName(name)];
   }
 
-  function _getSaltFromName(string memory name) pure returns (bytes32) {
+  function _getSaltFromName(string memory name)
+    internal
+    pure
+    returns (bytes32)
+  {
     return keccak256(abi.encode(name));
   }
 

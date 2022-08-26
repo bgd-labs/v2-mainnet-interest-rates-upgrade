@@ -5,25 +5,24 @@ import {DefaultReserveInterestRateStrategy} from '../../lib/aave-v3-core/contrac
 import {IPoolAddressesProvider} from '../../lib/aave-v3-core/contracts/interfaces/IPoolAddressesProvider.sol';
 import {AaveV2Ethereum} from 'aave-address-book/AaveV2Ethereum.sol';
 import {IV2InterestRatesUpgradePayload} from '../interfaces/V2InterestRatesUpgradePayload.sol';
-import {InterestRatesStrategiesParams} from './InterestRatesStrategiesParams.sol';
+import {InterestRatesStrategyConfigs} from './InterestRatesStrategyConfigs.sol';
 
 contract V2InterestRatesUpgradePayload is IV2InterestRatesUpgradePayload {
   constructor() {
-    InterestRatesStrategiesParams.InterestRatesStrategyParams[]
-      memory params = InterestRatesStrategiesParams
-        .getInterestRatesStrategiesParams();
+    InterestRatesStrategyConfigs.StrategyConfig[]
+      memory params = InterestRatesStrategyConfigs.getConfigs();
     for (uint256 i = 0; i < params.length; i++) {
       new DefaultReserveInterestRateStrategy(
         IPoolAddressesProvider(address(AaveV2Ethereum.POOL_ADDRESSES_PROVIDER)),
-        params[i].optimalUsageRatio,
-        params[i].baseVariableBorrowRate,
-        params[i].variableRateSlope1,
-        params[i].variableRateSlope2,
-        params[i].stableRateSlope1,
-        params[i].stableRateSlope2,
-        params[i].baseStableRateOffset,
-        params[i].stableRateExcessOffset,
-        params[i].optimalStableToTotalDebtRatio
+        params[i].params.optimalUsageRatio,
+        params[i].params.baseVariableBorrowRate,
+        params[i].params.variableRateSlope1,
+        params[i].params.variableRateSlope2,
+        params[i].params.stableRateSlope1,
+        params[i].params.stableRateSlope2,
+        params[i].params.baseStableRateOffset,
+        params[i].params.stableRateExcessOffset,
+        params[i].params.optimalStableToTotalDebtRatio
       );
     }
   }

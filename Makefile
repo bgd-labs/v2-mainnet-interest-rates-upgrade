@@ -9,4 +9,5 @@ update:; forge update
 build  :; forge build --sizes --via-ir
 build-watch  :; forge build --watch
 test   :; forge test --fork-url $RPC_URL -vvvv
+deploy-strategies :; forge script scripts/DeployV3Strategies.s.sol:Deploy --rpc-url $RPC_URL  --private-key $PRIVATE_KEY -vvv
 deploy-payload :; forge script scripts/DeployV2InterestRatesUpgradePayload.s.sol:Deploy --rpc-url $RPC_URL  --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv

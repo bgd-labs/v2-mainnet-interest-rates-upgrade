@@ -6,16 +6,15 @@ import {Test} from 'forge-std/Test.sol';
 import {AaveV2Ethereum} from 'aave-address-book/AaveV2Ethereum.sol';
 import {DataTypes} from 'aave-address-book/AaveV2.sol';
 import {DefaultReserveInterestRateStrategy} from '../lib/protocol-v2/contracts/protocol/lendingpool/DefaultReserveInterestRateStrategy.sol';
-import {InterestRatesStrategiesParams} from '../src/contracts/InterestRatesStrategiesParams.sol';
+import {InterestRatesStrategyConfigs} from '../src/contracts/InterestRatesStrategyConfigs.sol';
 
 contract InterestRatesStrategiesParamsTest is Test {
   function setUp() public {}
 
   function testThatWeHaveAllReserves() public {
     address[] memory reserves = AaveV2Ethereum.POOL.getReservesList();
-    InterestRatesStrategiesParams.InterestRatesStrategyParams[]
-      memory params = InterestRatesStrategiesParams
-        .getInterestRatesStrategiesParams();
+    InterestRatesStrategyConfigs.StrategyConfig[]
+      memory params = InterestRatesStrategyConfigs.getConfigs();
 
     for (uint256 i = 0; i < params.length; i++) {
       for (uint256 j = 0; j < params[i].assets.length; j++) {
@@ -33,9 +32,8 @@ contract InterestRatesStrategiesParamsTest is Test {
   }
 
   function testThatBaseParamsAreTheSameAsCurrentV2() public {
-    InterestRatesStrategiesParams.InterestRatesStrategyParams[]
-      memory params = InterestRatesStrategiesParams
-        .getInterestRatesStrategiesParams();
+    InterestRatesStrategyConfigs.StrategyConfig[]
+      memory params = InterestRatesStrategyConfigs.getConfigs();
 
     for (uint256 i = 0; i < params.length; i++) {
       for (uint256 j = 0; j < params[i].assets.length; j++) {
@@ -46,17 +44,29 @@ contract InterestRatesStrategiesParamsTest is Test {
             reserveData.interestRateStrategyAddress
           );
         assertEq(
-          params[i].optimalUsageRatio,
+          params[i].params.optimalUsageRatio,
           strategy.OPTIMAL_UTILIZATION_RATE()
         );
         assertEq(
-          params[i].baseVariableBorrowRate,
+          params[i].params.baseVariableBorrowRate,
           strategy.baseVariableBorrowRate()
         );
-        assertEq(params[i].variableRateSlope1, strategy.variableRateSlope1());
-        assertEq(params[i].variableRateSlope2, strategy.variableRateSlope2());
-        assertEq(params[i].stableRateSlope1, strategy.stableRateSlope1());
-        assertEq(params[i].stableRateSlope2, strategy.stableRateSlope2());
+        assertEq(
+          params[i].params.variableRateSlope1,
+          strategy.variableRateSlope1()
+        );
+        assertEq(
+          params[i].params.variableRateSlope2,
+          strategy.variableRateSlope2()
+        );
+        assertEq(
+          params[i].params.stableRateSlope1,
+          strategy.stableRateSlope1()
+        );
+        assertEq(
+          params[i].params.stableRateSlope2,
+          strategy.stableRateSlope2()
+        );
       }
     }
   }
