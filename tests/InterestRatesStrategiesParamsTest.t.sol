@@ -9,7 +9,7 @@ import {DataTypes} from 'aave-address-book/AaveV2.sol';
 import {ILendingRateOracle} from '../lib/next-protocol-v2/contracts/interfaces/ILendingRateOracle.sol';
 import {Ownable} from '../lib/next-protocol-v2/contracts/dependencies/openzeppelin/contracts/Ownable.sol';
 
-import {IV2ReserveInterestRatesStrategy} from '../src/contracts/IV2ReserveInterestRatesStrategy.sol';
+import {IV2ReserveInterestRatesStrategy} from '../src/interfaces/IV2ReserveInterestRatesStrategy.sol';
 import {InterestRatesStrategyConfigs} from '../src/contracts/InterestRatesStrategyConfigs.sol';
 import {V2V3ReserveInterestRateStrategy} from '../src/contracts/V2V3ReserveInterestRateStrategy.sol';
 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {IInterestRatesStrategyFactory} from './IInterestRatesStrategyFactory.sol';
+import {IInterestRatesStrategyFactory} from '../interfaces/IInterestRatesStrategyFactory.sol';
 import {V2V3ReserveInterestRateStrategy, IPoolAddressesProvider} from './V2V3ReserveInterestRateStrategy.sol';
 
 contract InterestRatesStrategyFactory is IInterestRatesStrategyFactory {

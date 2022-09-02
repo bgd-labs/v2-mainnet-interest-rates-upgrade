@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import {DefaultReserveInterestRateStrategy, PercentageMath, WadRayMath, DataTypes, IPoolAddressesProvider} from '../../lib/aave-v3-core/contracts/protocol/pool/DefaultReserveInterestRateStrategy.sol';
-import {IV2ReserveInterestRatesStrategy} from './IV2ReserveInterestRatesStrategy.sol';
+import {IV2ReserveInterestRatesStrategy} from '../interfaces/IV2ReserveInterestRatesStrategy.sol';
 
 contract V2V3ReserveInterestRateStrategy is
   DefaultReserveInterestRateStrategy,
