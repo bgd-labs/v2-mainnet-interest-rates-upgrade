@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {DefaultReserveInterestRateStrategy, IPoolAddressesProvider} from '../../aave-v3-core/contracts/protocol/pool/DefaultReserveInterestRateStrategy.sol';
 import {IInterestRatesStrategyFactory} from './IInterestRatesStrategyFactory.sol';
+import {V2V3ReserveInterestRateStrategy, IPoolAddressesProvider} from './V2V3ReserveInterestRateStrategy.sol';
 
 contract InterestRatesStrategyFactory is IInterestRatesStrategyFactory {
   mapping(bytes32 => address) private _deployedStrategies;
@@ -14,7 +14,7 @@ contract InterestRatesStrategyFactory is IInterestRatesStrategyFactory {
     address[] memory strategies = new address[](strategyParams.length);
     for (uint256 i = 0; i < strategyParams.length; i++) {
       strategies[i] = address(
-        new DefaultReserveInterestRateStrategy{
+        new V2V3ReserveInterestRateStrategy{
           salt: _getSaltFromName(strategyParams[i].name)
         }(
           IPoolAddressesProvider(address(0)), // TODO: check
@@ -58,7 +58,7 @@ contract InterestRatesStrategyFactory is IInterestRatesStrategyFactory {
       _predictCreate2Address(
         address(this),
         _getSaltFromName(params.name),
-        type(DefaultReserveInterestRateStrategy).creationCode,
+        type(V2V3ReserveInterestRateStrategy).creationCode,
         abi.encode(params)
       );
   }

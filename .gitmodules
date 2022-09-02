@@ -7,6 +7,9 @@
 [submodule "lib/aave-v3-core"]
 	path = lib/aave-v3-core
 	url = https://github.com/aave/aave-v3-core
-[submodule "lib/protocol-v2"]
-	path = lib/protocol-v2
+[submodule "lib/legacy-protocol-v2"]
+	path = lib/legacy-protocol-v2
+	url = https://github.com/aave/protocol-v2
+[submodule "lib/next-protocol-v2"]
+	path = lib/next-protocol-v2
 	url = https://github.com/bgd-labs/protocol-v2

@@ -28,7 +28,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 1 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.01 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.08 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -36,11 +36,12 @@ library InterestRatesStrategyConfigs {
       deployedStrategyAddress: address(0)
     });
 
-    assets = new address[](4);
+    assets = new address[](5);
     assets[0] = 0x6B175474E89094C44Da98b954EedeAC495271d0F; // DAI
     assets[1] = 0x0000000000085d4780B73119b644AE5ecd22b376; // TUSD
     assets[2] = 0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919; // RAI
     assets[3] = 0xa693B19d2931d498c5B318dF961919BB4aee87a5; // UST
+    assets[4] = 0x5f98805A4E8be255a32880FDeC7F6728C6568bA0; // LUSD
     params[1] = StrategyConfig({
       params: IInterestRatesStrategyFactory.StrategyParams({
         name: 'rateStrategyStableTwo', // STABLE
@@ -50,7 +51,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 0.75 * 1e27,
         stableRateSlope1: 0.02 * 1e27,
         stableRateSlope2: 0.75 * 1e27,
-        baseStableRateOffset: 0.01 * 1e27,
+        baseStableRateOffset: 0.06 * 1e27,
         stableRateExcessOffset: 0.08 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -70,7 +71,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 0.6 * 1e27,
         stableRateSlope1: 0.02 * 1e27,
         stableRateSlope2: 0.6 * 1e27,
-        baseStableRateOffset: 0.01 * 1e27,
+        baseStableRateOffset: 0.06 * 1e27,
         stableRateExcessOffset: 0.08 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -89,7 +90,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 1 * 1e27,
         stableRateSlope1: 0.04 * 1e27,
         stableRateSlope2: 1 * 1e27,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -108,7 +109,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 0,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -137,7 +138,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 3 * 1e27,
         stableRateSlope1: 0.1 * 1e27,
         stableRateSlope2: 3 * 1e27,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -157,7 +158,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 3 * 1e27,
         stableRateSlope1: 0.1 * 1e27,
         stableRateSlope2: 3 * 1e27,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -178,7 +179,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 3 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -197,7 +198,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 1 * 1e27,
         stableRateSlope1: 0.04 * 1e27,
         stableRateSlope2: 1 * 1e27,
-        baseStableRateOffset: 0.01 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.08 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -216,7 +217,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 3 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -235,7 +236,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 7.5 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -254,7 +255,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 0.6 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.01 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.08 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -273,7 +274,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 3 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -292,7 +293,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 0.75 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.01 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.08 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -311,7 +312,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 1 * 1e27,
         stableRateSlope1: 0.02 * 1e27,
         stableRateSlope2: 1 * 1e27,
-        baseStableRateOffset: 0.01 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.08 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -330,7 +331,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 2 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -349,7 +350,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 1 * 1e27,
         stableRateSlope1: 0,
         stableRateSlope2: 0,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
@@ -368,7 +369,7 @@ library InterestRatesStrategyConfigs {
         variableRateSlope2: 3 * 1e27,
         stableRateSlope1: 0.12 * 1e27,
         stableRateSlope2: 3 * 1e27,
-        baseStableRateOffset: 0.02 * 1e27,
+        baseStableRateOffset: 0,
         stableRateExcessOffset: 0.05 * 1e27,
         optimalStableToTotalDebtRatio: 0.2 * 1e27
       }),
