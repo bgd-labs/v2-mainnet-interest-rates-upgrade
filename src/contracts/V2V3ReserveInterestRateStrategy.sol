@@ -12,27 +12,27 @@ contract V2V3ReserveInterestRateStrategy is
 
   constructor(
     IPoolAddressesProvider provider,
-    uint256 optimalUsageRatio,
-    uint256 baseVariableBorrowRate,
-    uint256 variableRateSlope1,
-    uint256 variableRateSlope2,
-    uint256 stableRateSlope1,
-    uint256 stableRateSlope2,
-    uint256 baseStableRateOffset,
-    uint256 stableRateExcessOffset,
-    uint256 optimalStableToTotalDebtRatio
+    uint256 inpOptimalUsageRatio,
+    uint256 inpBaseVariableBorrowRate,
+    uint256 inpVariableRateSlope1,
+    uint256 inpVariableRateSlope2,
+    uint256 inpStableRateSlope1,
+    uint256 inpStableRateSlope2,
+    uint256 inpBaseStableRateOffset,
+    uint256 inpStableRateExcessOffset,
+    uint256 inpOptimalStableToTotalDebtRatio
   )
     DefaultReserveInterestRateStrategy(
       provider,
-      optimalUsageRatio,
-      baseVariableBorrowRate,
-      variableRateSlope1,
-      variableRateSlope2,
-      stableRateSlope1,
-      stableRateSlope2,
-      baseStableRateOffset,
-      stableRateExcessOffset,
-      optimalStableToTotalDebtRatio
+      inpOptimalUsageRatio,
+      inpBaseVariableBorrowRate,
+      inpVariableRateSlope1,
+      inpVariableRateSlope2,
+      inpStableRateSlope1,
+      inpStableRateSlope2,
+      inpBaseStableRateOffset,
+      inpStableRateExcessOffset,
+      inpOptimalStableToTotalDebtRatio
     )
   {}
 
