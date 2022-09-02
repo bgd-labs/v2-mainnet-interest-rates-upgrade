@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Script} from 'forge-std/Script.sol';
+
 import {InterestRatesStrategyFactory} from '../src/contracts/InterestRatesStrategyFactory.sol';
 import {InterestRatesStrategyConfigs} from '../src/contracts/InterestRatesStrategyConfigs.sol';
 
