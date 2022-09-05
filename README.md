@@ -3,7 +3,7 @@
 ## Context
 
 At first glance, v2 -> v3 migration is a very complex process requiring many upgrades, which should
-happen atomically and in a very particular order. Which leads to significant gas requirements in 1 single tx.
+happen atomically and in a very particular order. Which leads to significant gas requirements in 1 single transaction.
 
 One of the breaking changes is a new `DefaultReserveInterestRateStrategy` due to
 the different list of parameters and modified data fetching flow. At the same time,
