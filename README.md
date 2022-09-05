@@ -2,8 +2,9 @@
 
 ## Context
 
-One of the v2 -> v3 migration breaking changes is a new `DefaultReserveInterestRateStrategy`,
-in the same time, this is a very isolated change that requires minimal v2 `LendingPool` update
+One of the v2 -> v3 migration breaking changes is a new `DefaultReserveInterestRateStrategy` due to
+the different list of parameters and modified data fetching flow. In the same time,
+this is a very isolated change that requires minimal v2 `LendingPool` update
 and a lot of gas to deploy. That's why BGD labs decided to separate it into
 the independent phase. But it has some problems described below
 
