@@ -12,7 +12,7 @@ the independent phase. But it has some problems described below
 solidity 0.8.0 to have support structs as [parameters of external functions](https://github.com/aave/aave-v3-core/blob/master/contracts/protocol/pool/DefaultReserveInterestRateStrategy.sol#L194),
 which is quite a big change and requires audit.
  * in the same time `v3 DefaultReserveInterestRateStrategy` is not compatible with `v2 DefaultReserveInterestRateStrategy`
-interface, what will brake existing integrations
+interface, what will break existing integrations
 
 ## Solution
  * develop extended `v3 DefaultReserveInterestRateStrategy` which will be compatible with both [v2 and v3 interfaces](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/src/contracts/ExtendedV3ReserveInterestRateStrategy.sol)
