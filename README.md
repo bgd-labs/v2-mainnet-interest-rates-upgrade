@@ -39,5 +39,7 @@ from all deployed `v2 DefaultInterestRatesStrategies`
 `v2 DefaultInterestRatesStrategies` deployed
 
 ## Testing approach
+We consider, that v2 `LendingPool` and v3 `DefaultReserveInterestRateStrategy` implementation was already tested
+and audited by aave. So, we're focusing out attention on the following:
  * [Checking](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/tests/InterestRatesStrategiesParamsTest.t.sol)
 that all common params on upcoming v3 strategies are identical to the deployed v2 params
