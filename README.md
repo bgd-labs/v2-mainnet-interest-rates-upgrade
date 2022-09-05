@@ -23,7 +23,8 @@ which currently in production on the Aave v2 Polygon market, to make it compatib
 because deployed aTokens don't have this method implemented. We can do it, because this method
 currently not used on the [v2 codebase](https://github.com/aave/protocol-v2/blob/master/contracts/protocol/tokenization/AToken.sol#L323).
 Here is: [Corresponding PR](https://github.com/bgd-labs/protocol-v2/pull/6)
-
+ * develop [the payload](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/src/contracts/Phase1Payload.sol)
+which will execute required operations
 ## Preparations
  * download [all configuration params](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/src/contracts/InterestRatesStrategyConfigs.sol)
 from all deployed `v2 DefaultInterestRatesStrategies`
