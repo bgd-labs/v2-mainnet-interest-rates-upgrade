@@ -2,11 +2,16 @@
 
 ## Context
 
-One of the v2 -> v3 migration breaking changes is a new `DefaultReserveInterestRateStrategy` due to
-the different list of parameters and modified data fetching flow. In the same time,
-this is a very isolated change that requires minimal v2 `LendingPool` update
-and a lot of gas to deploy. That's why BGD labs decided to separate it into
-the independent phase. But it has some problems described below
+At first glance, v2 -> v3 migration is a very complex process requiring many upgrades, which should
+happen atomically and in a very particular order. Which leads to significant gas requirements in 1 single tx.
+
+One of the breaking changes is a new `DefaultReserveInterestRateStrategy` due to
+the different list of parameters and modified data fetching flow. At the same time,
+this is a very isolated change that requires minimal v2 `LendingPool` update and a lot of gas to deploy.
+So after analyzing the whole migration process better, we decided to extract components that don't need
+to be atomic: the rates, into the independent phase that we're going to execute before everything else.
+
+This document presents the challenges and solutions found during this Phase 1 of the migration.
 
 ## Problem
  * to be able to use v3 `DefaultReserveInterestRateStrategy` we should upgrade `LendingPool` contract to
@@ -26,6 +31,7 @@ currently not used on the [v2 codebase](https://github.com/aave/protocol-v2/blob
 Here is: [Corresponding PR](https://github.com/bgd-labs/protocol-v2/pull/6)
  * develop [the payload](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/src/contracts/Phase1Payload.sol)
 which will execute required operations
+
 ## Preparations
  * download [all configuration params](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/src/contracts/InterestRatesStrategyConfigs.sol)
 from all deployed `v2 DefaultInterestRatesStrategies`
