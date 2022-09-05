@@ -1,3 +1,15 @@
 [submodule "lib/forge-std"]
 	path = lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "lib/aave-address-book"]
+	path = lib/aave-address-book
+	url = https://github.com/bgd-labs/aave-address-book
+[submodule "lib/aave-v3-core"]
+	path = lib/aave-v3-core
+	url = https://github.com/aave/aave-v3-core
+[submodule "lib/legacy-protocol-v2"]
+	path = lib/legacy-protocol-v2
+	url = https://github.com/aave/protocol-v2
+[submodule "lib/next-protocol-v2"]
+	path = lib/next-protocol-v2
+	url = https://github.com/bgd-labs/protocol-v2

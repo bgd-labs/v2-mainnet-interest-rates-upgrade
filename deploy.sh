@@ -2,4 +2,5 @@
 source .env
 
 # To deploy and verify our contract
-forge script script/Ghost.s.sol:Deploy --rpc-url $RPC_URL  --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv
+#forge script script/Ghost.s.sol:Deploy --rpc-url $RPC_URL  --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv
+forge script scripts/DeployV3Strategies.s.sol:Deploy --rpc-url $RPC_URL  --private-key $PRIVATE_KEY -vvvv

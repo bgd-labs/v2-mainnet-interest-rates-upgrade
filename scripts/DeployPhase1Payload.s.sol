@@ -2,12 +2,13 @@
 pragma solidity ^0.8.0;
 
 import {Script} from 'forge-std/Script.sol';
-import {Ghost} from '../src/contracts/Ghost.sol';
+
+import {Phase1Payload} from '../src/contracts/Phase1Payload.sol';
 
 contract Deploy is Script {
   function run() external {
     vm.startBroadcast();
-    new Ghost();
+    new Phase1Payload();
     vm.stopBroadcast();
   }
 }
