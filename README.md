@@ -43,4 +43,6 @@ We consider, that v2 `LendingPool` and v3 `DefaultReserveInterestRateStrategy` i
 and audited by aave. So, we're focusing out attention on the following:
  * [Checking](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/tests/InterestRatesStrategiesParamsTest.t.sol)
 that all common params on upcoming v3 strategies are identical to the deployed v2 params
- * integration testing of the proposal execution
+ * Integration testing of the proposal execution
+ * For the legacy method of calculateInterestRates we boil down to the security review, because we don't consider
+anyone using it offchain, and it's the same logic as in the main method
