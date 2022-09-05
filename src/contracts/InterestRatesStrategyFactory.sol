@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {IInterestRatesStrategyFactory} from '../interfaces/IInterestRatesStrategyFactory.sol';
-import {V2V3ReserveInterestRateStrategy, IPoolAddressesProvider} from './V2V3ReserveInterestRateStrategy.sol';
+import {ExtendedV3ReserveInterestRateStrategy, IPoolAddressesProvider} from './ExtendedV3ReserveInterestRateStrategy.sol';
 
 contract InterestRatesStrategyFactory is IInterestRatesStrategyFactory {
   mapping(bytes32 => address) private _deployedStrategies;
@@ -14,7 +14,7 @@ contract InterestRatesStrategyFactory is IInterestRatesStrategyFactory {
     address[] memory strategies = new address[](strategyParams.length);
     for (uint256 i = 0; i < strategyParams.length; i++) {
       strategies[i] = address(
-        new V2V3ReserveInterestRateStrategy{
+        new ExtendedV3ReserveInterestRateStrategy{
           salt: _getSaltFromName(strategyParams[i].name)
         }(
           IPoolAddressesProvider(address(0)), // TODO: check
@@ -58,7 +58,7 @@ contract InterestRatesStrategyFactory is IInterestRatesStrategyFactory {
       _predictCreate2Address(
         address(this),
         _getSaltFromName(params.name),
-        type(V2V3ReserveInterestRateStrategy).creationCode,
+        type(ExtendedV3ReserveInterestRateStrategy).creationCode,
         abi.encode(params)
       );
   }

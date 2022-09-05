@@ -11,7 +11,7 @@ import {Ownable} from '../lib/next-protocol-v2/contracts/dependencies/openzeppel
 
 import {IV2ReserveInterestRatesStrategy} from '../src/interfaces/IV2ReserveInterestRatesStrategy.sol';
 import {InterestRatesStrategyConfigs} from '../src/contracts/InterestRatesStrategyConfigs.sol';
-import {V2V3ReserveInterestRateStrategy} from '../src/contracts/V2V3ReserveInterestRateStrategy.sol';
+import {ExtendedV3ReserveInterestRateStrategy} from '../src/contracts/ExtendedV3ReserveInterestRateStrategy.sol';
 
 import {Phase1Payload, IProposalGenericExecutor} from '../src/contracts/Phase1Payload.sol';
 
@@ -114,7 +114,7 @@ contract InterestRatesStrategiesParamsTest is Test {
         DataTypes.ReserveData memory reserveData = AaveV2Ethereum
           .POOL
           .getReserveData(configs[i].assets[j]);
-        V2V3ReserveInterestRateStrategy strategy = V2V3ReserveInterestRateStrategy(
+        ExtendedV3ReserveInterestRateStrategy strategy = ExtendedV3ReserveInterestRateStrategy(
             reserveData.interestRateStrategyAddress
           );
 
