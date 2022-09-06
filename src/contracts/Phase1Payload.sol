@@ -36,7 +36,7 @@ contract Phase1Payload is IProposalGenericExecutor {
     for (uint256 i = 0; i < strategies.length; i++) {
       for (uint256 j = 0; j < strategies[i].assets.length; j++) {
         AaveV2Ethereum.POOL.setReserveInterestRateStrategyAddress(
-          strategies[i].assets[i],
+          strategies[i].assets[j],
           strategies[i].deployedStrategyAddress
         );
       }
