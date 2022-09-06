@@ -24,11 +24,12 @@ interface, what will break existing integrations
  * Develop an extended `v3 DefaultReserveInterestRateStrategy` which will be compatible with both [v2 and v3 interfaces](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/src/contracts/ExtendedV3ReserveInterestRateStrategy.sol)
  * Upgrade v2 LendingPool implementation with [the latest commit of the protocol-v2 master branch](https://github.com/aave/protocol-v2/blob/master/contracts/protocol/libraries/logic/ReserveLogic.sol#L223),
 which is currently in production on the Aave v2 Polygon market, to make it compatible with the
-`ExtendedV3DefaultReserveInterestRateStrategy` list of parameters
+`ExtendedV3DefaultReserveInterestRateStrategy` list of parameters.
+The diff between implementations is: [here](https://github.com/bgd-labs/protocol-v2-diffs/blob/main/diffs/lendingpool/eth-poly-LendinPool-diff.md)
  * Remove `aToken.handleRepay()` call from the [latest commit of the protocol-v2 master branch](https://github.com/aave/protocol-v2/blob/master/contracts/protocol/lendingpool/LendingPool.sol#L285),
 because deployed aTokens don't have this method implemented. We can do it because this method
 currently not used on the [v2 codebase](https://github.com/aave/protocol-v2/blob/master/contracts/protocol/tokenization/AToken.sol#L323).
-Here is: [Corresponding PR](https://github.com/bgd-labs/protocol-v2/pull/6)
+Here is: [Corresponding PR](https://github.com/bgd-labs/protocol-v2/pull/6).
  * Develop [the payload](https://github.com/bgd-labs/v2-mainnet-interest-rates-upgrade/blob/main/src/contracts/Phase1Payload.sol)
 which will execute the required operations
 
