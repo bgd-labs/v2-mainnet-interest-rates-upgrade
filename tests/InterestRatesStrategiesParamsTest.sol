@@ -94,7 +94,9 @@ contract InterestRatesStrategiesParamsTest is Test {
     }
   }
 
-  function testThatV3StrategiesAreTheSameAsParams() public {
+  // @dev phase 2 of the tests, full integration
+  // TODO: once we will have strategies and pool deployed change the visibility to public
+  function testThatV3StrategiesAreTheSameAsParams() internal {
     IProposalGenericExecutor payload = new Phase1Payload();
 
     // @dev transfer permissions to the payload
