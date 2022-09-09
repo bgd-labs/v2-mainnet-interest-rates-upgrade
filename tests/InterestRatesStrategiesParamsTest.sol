@@ -6,14 +6,20 @@ import {Test} from 'forge-std/Test.sol';
 import {AaveV2Ethereum} from 'aave-address-book/AaveV2Ethereum.sol';
 import {AaveGovernanceV2} from 'aave-address-book/AaveGovernanceV2.sol';
 import {DataTypes} from 'aave-address-book/AaveV2.sol';
-import {ILendingRateOracle} from '../lib/next-protocol-v2/contracts/interfaces/ILendingRateOracle.sol';
-import {Ownable} from '../lib/next-protocol-v2/contracts/dependencies/openzeppelin/contracts/Ownable.sol';
 
 import {IV2ReserveInterestRatesStrategy} from '../src/interfaces/IV2ReserveInterestRatesStrategy.sol';
 import {InterestRatesStrategyConfigs} from '../src/contracts/InterestRatesStrategyConfigs.sol';
 import {ExtendedV3ReserveInterestRateStrategy} from '../src/contracts/ExtendedV3ReserveInterestRateStrategy.sol';
 
 import {Phase1Payload, IProposalGenericExecutor} from '../src/contracts/Phase1Payload.sol';
+
+interface ILendingRateOracle {
+  function getMarketBorrowRate(address asset) external view returns (uint256);
+}
+
+interface Ownable {
+  function transferOwnership(address newOwner) external;
+}
 
 contract InterestRatesStrategiesParamsTest is Test {
   function setUp() public {}

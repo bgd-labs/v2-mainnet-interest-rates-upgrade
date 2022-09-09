@@ -5,12 +5,15 @@ import {console2} from 'forge-std/console2.sol';
 import {AaveV2Ethereum} from 'aave-address-book/AaveV2Ethereum.sol';
 import {DataTypes} from 'aave-address-book/AaveV2.sol';
 
-import {IERC20} from '../lib/next-protocol-v2/contracts/dependencies/openzeppelin/contracts/IERC20.sol';
 import '../lib/aave-v3-core/contracts/protocol/libraries/types/DataTypes.sol' as DataTypesV3;
 
 import {ExtendedV3ReserveInterestRateStrategy, DefaultReserveInterestRateStrategy} from '../src/contracts/ExtendedV3ReserveInterestRateStrategy.sol';
 import {InterestRatesStrategyConfigs} from '../src/contracts/InterestRatesStrategyConfigs.sol';
 import {InterestRatesStrategyFactory} from '../src/contracts/InterestRatesStrategyFactory.sol';
+
+interface IERC20 {
+  function balanceOf(address account) external view returns (uint256);
+}
 
 contract ExtendedStrategyMethodsTest is Test {
   ExtendedV3ReserveInterestRateStrategy public strategy;
