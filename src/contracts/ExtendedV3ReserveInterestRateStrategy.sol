@@ -164,7 +164,7 @@ contract ExtendedV3ReserveInterestRateStrategy is
     )
   {
     return
-      calculateInterestRates(
+      this.calculateInterestRates(
         DataTypes.CalculateInterestRatesParams({
           unbacked: 0,
           liquidityAdded: liquidityAdded,

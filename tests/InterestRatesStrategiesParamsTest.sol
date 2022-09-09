@@ -6,8 +6,6 @@ import {Test} from 'forge-std/Test.sol';
 import {AaveV2Ethereum} from 'aave-address-book/AaveV2Ethereum.sol';
 import {AaveGovernanceV2} from 'aave-address-book/AaveGovernanceV2.sol';
 import {DataTypes} from 'aave-address-book/AaveV2.sol';
-import {ILendingRateOracle} from '../lib/next-protocol-v2/contracts/interfaces/ILendingRateOracle.sol';
-import {Ownable} from '../lib/next-protocol-v2/contracts/dependencies/openzeppelin/contracts/Ownable.sol';
 
 import {IV2ReserveInterestRatesStrategy} from '../src/interfaces/IV2ReserveInterestRatesStrategy.sol';
 import {InterestRatesStrategyConfigs} from '../src/contracts/InterestRatesStrategyConfigs.sol';
@@ -15,8 +13,18 @@ import {ExtendedV3ReserveInterestRateStrategy} from '../src/contracts/ExtendedV3
 
 import {Phase1Payload, IProposalGenericExecutor} from '../src/contracts/Phase1Payload.sol';
 
+interface ILendingRateOracle {
+  function getMarketBorrowRate(address asset) external view returns (uint256);
+}
+
+interface Ownable {
+  function transferOwnership(address newOwner) external;
+}
+
 contract InterestRatesStrategiesParamsTest is Test {
-  function setUp() public {}
+  function setUp() public {
+    vm.createSelectFork(vm.rpcUrl('ethereum'));
+  }
 
   function testThatWeHaveAllReserves() public {
     address[] memory reserves = AaveV2Ethereum.POOL.getReservesList();
@@ -94,7 +102,9 @@ contract InterestRatesStrategiesParamsTest is Test {
     }
   }
 
-  function testThatV3StrategiesAreTheSameAsParams() public {
+  // @dev phase 2 of the tests, full integration
+  // TODO: once we will have strategies and pool deployed change the visibility to public
+  function testThatV3StrategiesAreTheSameAsParams() internal {
     IProposalGenericExecutor payload = new Phase1Payload();
 
     // @dev transfer permissions to the payload
