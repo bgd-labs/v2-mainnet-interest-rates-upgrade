@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import {Test} from 'forge-std/Test.sol';
-import {console2} from 'forge-std/console2.sol';
 import {AaveV2Ethereum} from 'aave-address-book/AaveV2Ethereum.sol';
 import {DataTypes} from 'aave-address-book/AaveV2.sol';
 
@@ -44,7 +43,7 @@ contract ExtendedStrategyMethodsTest is Test {
         totalStableDebt: 1 ether,
         totalVariableDebt: 1 ether,
         averageStableBorrowRate: 1 * 1e27,
-        reserveFactor: 2 * 1e27,
+        reserveFactor: 1000,
         reserve: reserve,
         aToken: reserveData.aTokenAddress
       });
@@ -57,7 +56,6 @@ contract ExtendedStrategyMethodsTest is Test {
 
     uint256[3] memory actualRates;
     uint256[3] memory legacyRates;
-    console2.log('hhh');
     (actualRates[0], actualRates[1], actualRates[2]) = strategy
       .calculateInterestRates(testParams);
     (legacyRates[0], legacyRates[1], legacyRates[2]) = strategy
