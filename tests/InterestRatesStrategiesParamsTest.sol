@@ -22,7 +22,9 @@ interface Ownable {
 }
 
 contract InterestRatesStrategiesParamsTest is Test {
-  function setUp() public {}
+  function setUp() public {
+    vm.createSelectFork(vm.rpcUrl('ethereum'));
+  }
 
   function testThatWeHaveAllReserves() public {
     address[] memory reserves = AaveV2Ethereum.POOL.getReservesList();

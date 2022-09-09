@@ -19,6 +19,7 @@ contract ExtendedStrategyMethodsTest is Test {
   address public reserve;
 
   function setUp() external {
+    vm.createSelectFork(vm.rpcUrl('ethereum'), 15503086);
     InterestRatesStrategyFactory factory = new InterestRatesStrategyFactory();
     InterestRatesStrategyConfigs.StrategyConfig
       memory config = InterestRatesStrategyConfigs.getConfigs()[1];
